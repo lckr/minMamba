@@ -12,6 +12,7 @@ https://github.com/karpathy/minGPT
 3) Ryan Bradys nanoMamba implementation
 https://github.com/rjb7731/nanoMamba 
 """
+
 import math
 import typing
 from dataclasses import dataclass
@@ -333,10 +334,15 @@ class MambaLMModel(torch.nn.Module):
         model.load_state_dict(state_dict=state_dict)
 
         return model
-    
+
     @torch.no_grad()
     def generate(
-        self, input_ids: torch.Tensor, max_new_tokens: int, temperature=1.0, do_sample=False, top_k=None
+        self,
+        input_ids: torch.Tensor,
+        max_new_tokens: int,
+        temperature=1.0,
+        do_sample=False,
+        top_k=None,
     ):
         """
         Take a conditioning sequence of indices idx (LongTensor of shape (b,t)) and complete
